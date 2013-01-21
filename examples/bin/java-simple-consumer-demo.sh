@@ -14,16 +14,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+
+scala_version="2.9.2"
+
 base_dir=$(dirname $0)/../..
 
-for file in $base_dir/project/boot/scala-2.8.0/lib/*.jar;
+for file in $base_dir/project/boot/scala-$scala_version/lib/*.jar;
 do
   if [ ${file##*/} != "sbt-launch.jar" ]; then
     CLASSPATH=$CLASSPATH:$file
   fi
 done
 
-for file in $base_dir/core/lib_managed/scala_2.8.0/compile/*.jar;
+for file in $base_dir/core/lib_managed/scala_$scala_version/compile/*.jar;
 do
   CLASSPATH=$CLASSPATH:$file
 done
@@ -33,12 +36,12 @@ do
   CLASSPATH=$CLASSPATH:$file
 done
 
-for file in $base_dir/core/target/scala_2.8.0/*.jar;
+for file in $base_dir/core/target/scala_$scala_version/*.jar;
 do
   CLASSPATH=$CLASSPATH:$file
 done
 
-for file in $base_dir/examples/target/scala_2.8.0/*.jar;
+for file in $base_dir/examples/target/scala_$scala_version/*.jar;
 do
   CLASSPATH=$CLASSPATH:$file
 done

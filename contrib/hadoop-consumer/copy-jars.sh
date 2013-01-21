@@ -14,6 +14,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+scala_version="2.9.2"
+
+
 if [ $# -lt 1 ];
 then
   echo "USAGE: $0 dir"
@@ -31,15 +34,15 @@ echo "$hadoop fs -mkdir $1"
 $hadoop fs -mkdir $1
 
 # include kafka jars
-for file in $base_dir/contrib/hadoop-consumer/target/scala_2.8.0/*.jar;
+for file in $base_dir/contrib/hadoop-consumer/target/scala_$scala_version/*.jar;
 do
    echo "$hadoop fs -put $file $1/"
    $hadoop fs -put $file $1/ 
 done
 
 # include kafka jars
-echo "$hadoop fs -put $base_dir/core/target/scala_2.8.0/kafka-*.jar; $1/"
-$hadoop fs -put $base_dir/core/target/scala_2.8.0/kafka-*.jar $1/ 
+echo "$hadoop fs -put $base_dir/core/target/scala_$scala_version/kafka-*.jar; $1/"
+$hadoop fs -put $base_dir/core/target/scala_$scala_version/kafka-*.jar $1/ 
 
 # include core lib jars
 for file in $base_dir/core/lib/*.jar;
@@ -48,15 +51,15 @@ do
    $hadoop fs -put $file $1/ 
 done
 
-for file in $base_dir/core/lib_managed/scala_2.8.0/compile/*.jar;
+for file in $base_dir/core/lib_managed/scala_$scala_version/compile/*.jar;
 do
    echo "$hadoop fs -put $file $1/"
    $hadoop fs -put $file $1/ 
 done
 
 # include scala library jar
-echo "$hadoop fs -put $base_dir/project/boot/scala-2.8.0/lib/scala-library.jar; $1/"
-$hadoop fs -put $base_dir/project/boot/scala-2.8.0/lib/scala-library.jar $1/
+echo "$hadoop fs -put $base_dir/project/boot/scala-$scala_version/lib/scala-library.jar; $1/"
+$hadoop fs -put $base_dir/project/boot/scala-$scala_version/lib/scala-library.jar $1/
 
 local_dir=$(dirname $0)
 

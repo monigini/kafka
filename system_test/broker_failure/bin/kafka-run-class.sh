@@ -14,6 +14,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+scala_version="2.9.2"
+
 if [ $# -lt 1 ];
 then
   echo "USAGE: $0 classname [opts]"
@@ -23,12 +25,12 @@ fi
 base_dir=$(dirname $0)/..
 kafka_inst_dir=${base_dir}/../..
 
-for file in $kafka_inst_dir/project/boot/scala-2.8.0/lib/*.jar;
+for file in $kafka_inst_dir/project/boot/scala-$scala_version/lib/*.jar;
 do
   CLASSPATH=$CLASSPATH:$file
 done
 
-for file in $kafka_inst_dir/core/target/scala_2.8.0/*.jar;
+for file in $kafka_inst_dir/core/target/scala_$scala_version/*.jar;
 do
   CLASSPATH=$CLASSPATH:$file
 done
@@ -38,12 +40,12 @@ do
   CLASSPATH=$CLASSPATH:$file
 done
 
-for file in $kafka_inst_dir/perf/target/scala_2.8.0/kafka*.jar;
+for file in $kafka_inst_dir/perf/target/scala_$scala_version/kafka*.jar;
 do
   CLASSPATH=$CLASSPATH:$file
 done
 
-for file in $kafka_inst_dir/core/lib_managed/scala_2.8.0/compile/*.jar;
+for file in $kafka_inst_dir/core/lib_managed/scala_$scala_version/compile/*.jar;
 do
   if [ ${file##*/} != "sbt-launch.jar" ]; then
     CLASSPATH=$CLASSPATH:$file

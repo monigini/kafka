@@ -14,6 +14,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+scala_version="2.9.2"
+
 base_dir=$(dirname $0)/..
 rat_excludes_file=$base_dir/.rat-excludes
 
@@ -23,7 +25,7 @@ else
   JAVA="$JAVA_HOME/bin/java"
 fi
 
-rat_command="$JAVA -jar $base_dir/lib_managed/scala_2.8.0/compile/apache-rat-0.8.jar --dir $base_dir "
+rat_command="$JAVA -jar $base_dir/lib_managed/scala_$scala_version/compile/apache-rat-0.8.jar --dir $base_dir "
 
 for f in $(cat $rat_excludes_file);
 do
