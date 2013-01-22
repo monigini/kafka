@@ -226,7 +226,7 @@ class KafkaProject(info: ProjectInfo) extends ParentProject(info) with IdeaProje
   trait TestDependencies {
     val easymock = "org.easymock" % "easymock" % "3.0" % "test"
     val junit = "junit" % "junit" % "4.1" % "test"
-    val scalaTest = "org.scalatest" % "scalatest" % "1.2" % "test"
+    val scalaTest = "org.scalatest" % "scalatest_2.9.0" % "1.4.1" % "test"
   }
 
   trait CoreDependencies {
@@ -243,7 +243,7 @@ class KafkaProject(info: ProjectInfo) extends ParentProject(info) with IdeaProje
   }
 
   trait CompressionDependencies {
-    val snappy = "org.xerial.snappy" % "snappy-java" % "1.0.4.1"	
+    val snappy = "org.xerial.snappy" % "snappy-java" % "1.0.4.1"
   }
 
 }
